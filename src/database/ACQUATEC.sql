@@ -10,8 +10,9 @@ USE acquatec;
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
+    cpf CHAR(11),
+    tel CHAR(9),
 	email VARCHAR(50),
-    cpf VARCHAR(50),
 	senha VARCHAR(50)
 );
 
@@ -28,11 +29,10 @@ CREATE TABLE medida (
 	temperatura DOUBLE,
 	umidade DOUBLE,
 	momento DATETIME,
-	fk_aquario INT
+	fk_signos INT
 );
 
-
-
+-- DROP DATABASE acquatec;
 
 /* para sql server - remoto - produção
 

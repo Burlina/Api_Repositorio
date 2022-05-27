@@ -110,11 +110,11 @@ body {
 }
 
 .dash {
-  width: 75%;
-  position: relative;
+  background-color: #161618;
+  width:75%;
+  position:absolute;
   top: 0;
   left: 25%;
-  background-color: #161618;
 
   /* width: 75%;
     display: flex;
@@ -122,7 +122,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;*/
-  height: 100vh;
+  height: 128vw;
+  margin-bottom: 7%;
 }
 
 .regua {
@@ -131,31 +132,60 @@ body {
   justify-content: center;
   width: 100%;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.perigo-frio {
-  background-color: #5c6bc0;
+.aries {
+  background-color: #e01b1b;
 }
 
-.perigo-quente {
+.touro {
   background-color: #ff7043;
 }
 
-.alerta-frio {
-  background-color: #42a5f5;
+.gemeos {
+  background-color: #f5ce42;
 }
 
-.alerta-quente {
-  background-color: #ffee58;
+.cancer {
+  background-color: #bfff58;
 }
 
-.ideal {
-  background-color: #9ccc65;
+.leao {
+  background-color: #65cc71;
+}
+
+.virgem {
+  background-color: #43ffd3;
+}
+
+.libra {
+  background-color: #42adf5;
+}
+
+.escorpiao {
+  background-color: #0d00ff;
+}
+
+.sagitario {
+  background-color: #6574cc;
+}
+
+.capricornio {
+  background-color: #8843ff;
+}
+
+.aquario {
+  background-color: #b942f5;
+}
+
+.peixes {
+  background-color: #ff5895;
 }
 
 .item-regua {
   padding: 5px;
-  width: 15%;
+  width: 70px;
   margin: 5px;
   text-align: center;
   padding-top: 15px;
@@ -165,7 +195,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 450px;
+  height: 100vw;
   width: 100%;
   align-items: center;
   color: white;
@@ -173,11 +203,11 @@ body {
 
 .card {
   margin: 2%;
-  width: 40%;
+  width: 42%;
   flex-wrap: wrap;
   display: flex;
   text-align: center;
-  height: 180px;
+  height: 260px;
   justify-content: right;
   background-color: #212124;
   font-size: 20px;
@@ -185,9 +215,9 @@ body {
 
 .card p {
   margin: 0;
-  font-size: 50px;
+  font-size: 20px;
   font-weight: lighter;
-  text-align: left;
+  text-align: center;
 }
 
 .cards h1 {
@@ -211,6 +241,7 @@ body {
   height: 30%;
   border-radius: 50px;
   margin-top: 6%;
+  margin-right: 2%;
   /* background-color: #c7c7c7; */
 }
 
@@ -218,7 +249,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 31px;
+  margin-left: 29px;
+  margin-right: 36px;
+  flex-wrap: wrap;
 }
 
 .graph {
@@ -228,12 +262,13 @@ body {
 }
 
 .btn-chart {
+  width: 159px;
   font-family: "Exo 2", sans-serif;
   border: 0;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 18px;
-  padding: 10px 15px;
+  padding: 23px 28px;
   color: white;
   background-color: #e6005a;
-  margin: 5px;
+  margin: 7px;
 }

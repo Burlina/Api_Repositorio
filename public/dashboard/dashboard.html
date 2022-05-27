@@ -35,7 +35,7 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Signos</h3>
                 </a>
             </div>
 
@@ -47,7 +47,7 @@
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Mural de Comentários</h3>
                 </a>
             </div>
 
@@ -59,11 +59,19 @@
 
         <div class="dash">
             <div class="btns-dash">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                <button class="btn-chart" onclick="obterDadosGrafico(1)">Aquario 1</button>
-                <button class="btn-chart" onclick="obterDadosGrafico(2)">Aquario 2</button>
-                <button class="btn-chart" onclick="obterDadosGrafico(3)">Aquario 3</button>
-                <button class="btn-chart" onclick="obterDadosGrafico(4)">Aquario 4</button>
+                    <!-- O gráfico é chamado de acordo com o id (fk_signos) do banco  -->
+                    <button class="btn-chart" onclick="obterDadosGrafico(1)">Àries</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(2)">Touro</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(3)">Gêmeos</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(4)">Câncer</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(5)">Leão</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(6)">Virgem</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(7)">Libra</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(8)">Escorpião</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(9)">Sagitário</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(10)">Capricórnio</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(11)">Aquário</button>
+                    <button class="btn-chart" onclick="obterDadosGrafico(12)">Peixes</button>
             </div>
             <div class="graph">
                 <canvas id="canvas_grafico"></canvas>
@@ -88,18 +96,18 @@
 
     // altere aqui como os dados serão exibidos
     // e como são recuperados do BackEnd
-    function obterDadosGrafico(idAquario) {
+    function obterDadosGrafico(IdSignos) {
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${IdSignos}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idAquario);
+                    plotarGrafico(resposta, IdSignos);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -112,11 +120,23 @@
     }
 
     // só altere aqui se souber o que está fazendo!
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta, IdSignos) {
         console.log('iniciando plotagem do gráfico...');
 
         var dados = {
-            labels: [],
+            labels: [
+                'Àries',
+                'Touro',
+                'Gêmeos',
+                'Câncer',
+                'Leão',
+                'Virgem',
+                'Libra',
+                'Escorpião',
+                'Sagitário',
+                'Capricórnio',
+                'Aquário',
+                'Peixes' ],
             datasets: [
                 {
                     yAxisID: 'y-umidade',
@@ -147,14 +167,14 @@
         console.log(JSON.stringify(dados));
 
         var ctx = canvas_grafico.getContext('2d');
-        window.grafico_linha = Chart.Line(ctx, {
+        window.grafico_linha = Chart.Bar(ctx, {
             data: dados,
             //Configurações do gráfico
             options: {
                 responsive: true,
                 animation: { duration: 500 },
                 hoverMode: 'index',
-                stacked: false,
+                stacked: true,
                 title: {
                     display: true,
                     text: 'Histórico recente de umidade/temperatura'
@@ -190,24 +210,24 @@
         });
 
         function sendData() {
-			var http = new XMLHttpRequest();
-			http.open('POST', 'http://localhost:3000/api/sendData', false);
-			http.send(null);
-		}
+            var http = new XMLHttpRequest();
+            http.open('POST', 'http://localhost:3000/api/sendData', false);
+            http.send(null);
+        }
 
         setInterval(() => {
-			sendData();
-		}, 2000);
+            sendData();
+        }, 2000);
 
         //Atualiza os dados de 5 em 5 segundos
-        setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+        setTimeout(() => atualizarGrafico(IdSignos, dados), 2000);
     }
 
     // só mexer se quiser alterar o tempo de atualização
     // ou se souber o que está fazendo!
-    function atualizarGrafico(idAquario, dados) {
+    function atualizarGrafico(IdSignos, dados) {
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${IdSignos}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -224,11 +244,11 @@
 
                     window.grafico_linha.update();
 
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(IdSignos, dados), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(IdSignos, dados), 2000);
             }
         })
             .catch(function (error) {
