@@ -13,8 +13,36 @@ body {
   display: flex;
 }
 
-.header {
-  border-bottom: 3px solid #32b9cd;
+.logo {
+  width: 200px;
+}
+
+.fate {
+  /*
+  width: 1093px;
+  height: 716px;*/
+  margin-left: -1.9px;
+  width: 1518px;
+  height: 562px;
+}
+
+/* .header {
+  border-bottom:#e6005a solid 3px;
+} */
+
+.border {
+  width: 1518px;
+  position: relative;
+  background: linear-gradient(to right, #e60000, #ff00aa, #6b00e6, #1b00e6, 
+  #00bce6, #00e67b, #f9f100, #f08800);
+  padding: 2px;
+}
+
+.border1 {
+  width: 1515px;
+  position: center;
+  background: linear-gradient(to right, #f08800, #d3e600, #00e67b, #00bce6, #1b00e6, #6b00e6, #ff00aa, #e60000);
+  padding: 2px;
 }
 
 .header .container {
@@ -23,7 +51,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: #cfcfcf;
 }
 
 .agora {
@@ -31,34 +59,60 @@ body {
 }
 
 .navbar {
-  width: 300px;
+  width: 400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: #cfcfcf;
+}
+
+/* BANNER */
+
+.container1 {
+  display: flex;
+}
+
+.banner .container1
+{
+  height: 587px;
+}
+
+.card1
+{
+  background-image: url("../assets/icon/original.gif");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  width: 100%;
+}
+
+.video{
+  margin-top: 30px;
+  margin-right: 30px;
+  height: 500px;
+  border-radius: 15px;
+  border: solid 5px #ffffffd1;
 }
 
 
 .titulo {
-  color: #32b9cd;
   width: fit-content;
-  font-weight: 500;
+  font-weight: 100;
+  font-size: x-large;
 }
-
-
-/* BANNER */
 
 .banner {
   height: fit-content;
-  padding: 40px 0;
   color: white;
-  background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
+  /*border-top:#e6005a solid 3px;*/
   background-size: cover;
+  object-fit: cover;
 }
 
 .banner .container {
-  height: 400px;
+  height: 572px;
   font-size: 36px;
   justify-content: center;
   align-items: center;
@@ -70,8 +124,6 @@ body {
 
 .banner p {
   width: 50%;
-  margin: 0;
-  padding: 0;
   width: 280px;
   font-size: 36px;
 }
@@ -83,7 +135,7 @@ body {
 /* missao visao valores */
 
 .social {
-  background-color: #e5e5e5;
+  background-color: #000000;
   display: flex;
 }
 
@@ -92,7 +144,7 @@ body {
 }
 
 .box img {
-  width: 170px;
+  width: 299px;
 }
 
 .social .container .boxes {
@@ -104,25 +156,20 @@ body {
 }
 
 .box {
-  margin: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-
-.box {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  /*background-color:#e6005a;*/
   height: 150px;
   color: #fff;
   display: flex;
