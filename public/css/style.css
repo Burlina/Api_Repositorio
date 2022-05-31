@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');*/
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Times, serif;
   background-color: black;
 }
 
@@ -25,10 +25,6 @@ body {
   width: 1518px;
   height: 562px;
 }
-
-/* .header {
-  border-bottom:#e6005a solid 3px;
-} */
 
 .border {
   width: 1518px;
@@ -75,7 +71,7 @@ body {
 
 .banner .container1
 {
-  height: 587px;
+  height: 575px;
 }
 
 .card1
@@ -136,15 +132,18 @@ body {
 
 .social {
   background-color: #000000;
+  background-image: url("../assets/imgs/Glitter.gif");
   display: flex;
+  Color: #ffffff;
 }
 
 .social .container{
   justify-content: center;
+  text-align: justify;
 }
 
 .box img {
-  width: 299px;
+  width: 296px;
 }
 
 .social .container .boxes {
@@ -155,11 +154,15 @@ body {
   text-align: center;
 }
 
+.books {
+  border-radius: 10px;
+}
+
 .box {
-  margin-top: 3px;
+  margin-top: 30px;
   margin-bottom: 3px;
-  margin-left: 2px;
-  margin-right: 2px;
+  margin-left: 3px;
+  margin-right: 3px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -321,7 +324,7 @@ input {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: #ffffff;
 }
 
 .hello {
@@ -385,10 +388,76 @@ input {
 
 /* pagina extra - simulador */
 .simulador {
-  color: white;
-
+  background-image: url("../assets/imgs/fundo3.jpg");
+  background-size: cover;
+  margin-left: 10px;
+  display: flex;
 }
 
 .simulador .container {
-  flex-direction: column
+  width: 740px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-right: 800px;
+  margin-bottom: 10px;
+  color:#000000;
+  border: double #000000 10px;
+  border-radius: 20px;
+  background-color: #ffffff3f;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.PaNews
+{
+  font-size: 18px;
+}
+
+.tituloNews
+{
+  font-weight: 800px;
+}
+
+.social1 {
+  background-color: #000000;
+  /* background-image: url("../assets/imgs/Glitter.gif");
+  background-size: cover; */
+  display: flex;
+  Color: #ffffff;
+}
+
+.social1 .container{
+  justify-content: center;
+  text-align: justify;
+}
+
+.social1 .container .boxes {
+  display: flex;
+}
+
+.social1 p {
+  padding-left: 18px;
+  padding-right: 18px;
+  text-align: center;
+}
+
+.box1 {
+  border-left:#e5e5e59b dotted 2px;
+  border-right:#e5e5e59b dotted 2px;
+  border-radius: 10px;
+  /* margin-top: 2px;
+  margin-bottom: 2px; */
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box1 img {
+  width: 239px;
 }
