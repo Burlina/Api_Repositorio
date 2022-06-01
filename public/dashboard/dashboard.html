@@ -27,7 +27,7 @@
 
     <div class="janela">
         <div class="header-left">
-            <h1>AcquaTec</h1>
+            <h1><img class="logo" src="../assets/icon/Icone1.png"></h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -35,7 +35,7 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Signos</h3>
+                    <h3>Personagens</h3>
                 </a>
             </div>
 
@@ -57,21 +57,17 @@
 
         </div>
 
+        <div class="border"></div>
+
         <div class="dash">
             <div class="btns-dash">
-                    <!-- O gráfico é chamado de acordo com o id (fk_signos) do banco  -->
-                    <button class="btn-chart" onclick="obterDadosGrafico(1)">Àries</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(2)">Touro</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(3)">Gêmeos</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(4)">Câncer</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(5)">Leão</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(6)">Virgem</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(7)">Libra</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(8)">Escorpião</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(9)">Sagitário</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(10)">Capricórnio</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(11)">Aquário</button>
-                    <button class="btn-chart" onclick="obterDadosGrafico(12)">Peixes</button>
+                    <!-- O gráfico é chamado de acordo com o id (fkfadas) do banco  -->
+                    <button class="btn-chart1" onclick="votar(1)"><img class="imgRegua" src="../assets/imgs/3.png"></button>
+                    <button class="btn-chart2" onclick="votar(2)"><img class="imgRegua" src="../assets/imgs/6.png"></button>
+                    <button class="btn-chart3" onclick="votar(3)"><img class="imgRegua" src="../assets/imgs/1.png"></button>
+                    <button class="btn-chart4" onclick="votar(4)"><img class="imgRegua" src="../assets/imgs/2.png"></button>
+                    <button class="btn-chart5" onclick="votar(5)"><img class="imgRegua" src="../assets/imgs/4.png"></button>
+                    <button class="btn-chart6" onclick="votar(6)"><img class="imgRegua" src="../assets/imgs/5.png"></button>
             </div>
             <div class="graph">
                 <canvas id="canvas_grafico"></canvas>
@@ -86,28 +82,56 @@
 
 <script>
 
-    let proximaAtualizacao;
+let proximaAtualizacao;
 
-    window.onload = obterDadosGrafico(1);
+window.onload = obterDadosGrafico(1); // deixa
 
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    //verificar_autenticacao();
+function votar(IdFadas) {
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
 
-    // altere aqui como os dados serão exibidos
-    // e como são recuperados do BackEnd
-    function obterDadosGrafico(IdSignos) {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
+        console.log('entrei na função votar');
 
-        fetch(`/medidas/ultimas/${IdSignos}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/votar/${IdFadas}`, { cache: 'no-store' }).then(function (response) {
+
+            console.log('entrei no fetch');
+
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, IdSignos);
+                    obterDadosGrafico(resposta, IdFadas);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+
+    }
+
+    //verificar_autenticacao();
+
+    // altere aqui como os dados serão exibidos
+    // e como são recuperados do BackEnd
+    function obterDadosGrafico(IdFadas) {
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/medidas/ultimas/${IdFadas}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, IdFadas);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -120,36 +144,24 @@
     }
 
     // só altere aqui se souber o que está fazendo!
-    function plotarGrafico(resposta, IdSignos) {
+    function plotarGrafico(resposta, IdFadas) {
         console.log('iniciando plotagem do gráfico...');
 
         var dados = {
-            labels: [
-                'Àries',
-                'Touro',
-                'Gêmeos',
-                'Câncer',
-                'Leão',
-                'Virgem',
-                'Libra',
-                'Escorpião',
-                'Sagitário',
-                'Capricórnio',
-                'Aquário',
-                'Peixes' ],
+            labels: [],
             datasets: [
+                // {
+                //     yAxisID: 'y-umidade',
+                //     label: 'Umidade',
+                //     borderColor: '#32B9CD',
+                //     backgroundColor: '#32b9cd8f',
+                //     fill: true,
+                //     data: []
+                // },
                 {
-                    yAxisID: 'y-umidade',
-                    label: 'Umidade',
+                    yAxisID: 'y-id',
+                    label: 'Popularidade',
                     borderColor: '#32B9CD',
-                    backgroundColor: '#32b9cd8f',
-                    fill: true,
-                    data: []
-                },
-                {
-                    yAxisID: 'y-temperatura',
-                    label: 'Temperatura',
-                    borderColor: '#FFF',
                     backgroundColor: '#32b9cd8f',
                     fill: true,
                     data: []
@@ -159,9 +171,9 @@
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            dados.labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            dados.labels.push(registro.nome);
+            // dados.datasets[0].data.push(registro.umidade);
+            dados.datasets[0].data.push(registro.id);
         }
 
         console.log(JSON.stringify(dados));
@@ -177,78 +189,64 @@
                 stacked: true,
                 title: {
                     display: true,
-                    text: 'Histórico recente de umidade/temperatura'
+                    text: 'Votos Adquiridos'
                 },
                 scales: {
                     yAxes: [{
                         type: 'linear',
                         display: true,
                         position: 'left',
-                        id: 'y-temperatura',
+                        id: 'y-id',
                         ticks: {
                             beginAtZero: true,
-                            max: 100,
+                            max: 50,
                             min: 0
                         }
-                    }, {
-                        type: 'linear',
-                        display: false,
-                        position: 'right',
-                        id: 'y-umidade',
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                            min: 0
-                        },
-
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
                     }],
                 }
             }
         });
 
-        function sendData() {
-            var http = new XMLHttpRequest();
-            http.open('POST', 'http://localhost:3000/api/sendData', false);
-            http.send(null);
-        }
+        // function sendData() {
+        //     var http = new XMLHttpRequest();
+        //     http.open('POST', 'http://localhost:3000/api/sendData', false);
+        //     http.send(null);
+        // }
 
-        setInterval(() => {
-            sendData();
-        }, 2000);
+        // setInterval(() => {
+        //     sendData();
+        // }, 2000);
 
         //Atualiza os dados de 5 em 5 segundos
-        setTimeout(() => atualizarGrafico(IdSignos, dados), 2000);
+    //    atualizarGrafico(IdFadas, dados); // nao pode!
     }
 
     // só mexer se quiser alterar o tempo de atualização
     // ou se souber o que está fazendo!
-    function atualizarGrafico(IdSignos, dados) {
+    function atualizarGrafico(IdFadas, dados) {
 
-        fetch(`/medidas/tempo-real/${IdSignos}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${IdFadas}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico: ${dados}`);
 
-                    // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                    dados.datasets[1].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
+                    // // tirando e colocando valores no gráfico
+                    // dados.labels.shift(); // apagar o primeiro
+                    // dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                    // dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                    // dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                    // dados.datasets[1].data.shift();  // apagar o primeiro de umidade
+                    // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
 
                     window.grafico_linha.update();
 
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(IdSignos, dados), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(IdFadas, dados), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(IdSignos, dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(IdFadas, dados), 2000);
             }
         })
             .catch(function (error) {

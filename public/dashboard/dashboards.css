@@ -2,7 +2,7 @@
 
 *,
 body {
-  font-family: "Exo 2", sans-serif;
+  font-family: Times, sans-serif;
 }
 
 .dash-right .avisos {
@@ -111,10 +111,12 @@ body {
 
 .dash {
   background-color: #161618;
-  width:75%;
-  position:absolute;
-  top: 0;
-  left: 25%;
+    width: 74.6%;
+    position: absolute;
+    top: 0;
+    left: 25.3%;
+    height: 100vw;
+    margin-bottom: 7%;
 
   /* width: 75%;
     display: flex;
@@ -122,8 +124,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;*/
-  height: 128vw;
-  margin-bottom: 7%;
 }
 
 .regua {
@@ -135,52 +135,28 @@ body {
   margin-bottom: 30px;
 }
 
-.aries {
-  background-color: #e01b1b;
+.bloom {
+  background-color: #e63121;
 }
 
-.touro {
-  background-color: #ff7043;
+.stella {
+  background-color: #fdfa53;
 }
 
-.gemeos {
-  background-color: #f5ce42;
+.musa {
+  background-color: #a024d3;
 }
 
-.cancer {
-  background-color: #bfff58;
+.terra {
+  background-color: #32b242;
 }
 
-.leao {
-  background-color: #65cc71;
+.aisha {
+  background-color: #4b84d3;
 }
 
-.virgem {
-  background-color: #43ffd3;
-}
-
-.libra {
-  background-color: #42adf5;
-}
-
-.escorpiao {
-  background-color: #0d00ff;
-}
-
-.sagitario {
-  background-color: #6574cc;
-}
-
-.capricornio {
-  background-color: #8843ff;
-}
-
-.aquario {
-  background-color: #b942f5;
-}
-
-.peixes {
-  background-color: #ff5895;
+.beatrix {
+  background-color: #0a05a3;
 }
 
 .item-regua {
@@ -229,8 +205,7 @@ body {
   margin: 20px;
 }
 
-.temperatura,
-.umidade {
+.quantidade{
   margin: 5px;
   margin-left: 20px;
   width: 75%;
@@ -261,14 +236,100 @@ body {
   padding-top: 45px;
 }
 
-.btn-chart {
-  width: 159px;
+.btn-chart1 {
+  width: 109px;
   font-family: "Exo 2", sans-serif;
   border: 0;
+  border-radius: 60px;
   font-weight: 700;
   font-size: 18px;
-  padding: 23px 28px;
+  padding: 11px 11px;
   color: white;
-  background-color: #e6005a;
+  background-color: #32b242;
   margin: 7px;
+}
+
+.btn-chart2 {
+  width: 109px;
+  font-family: "Exo 2", sans-serif;
+  border: 0;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 11px 11px;
+  color: white;
+  background-color: #fdfa53;
+  margin: 7px;
+}
+
+.btn-chart3 {
+  width: 109px;
+  font-family: "Exo 2", sans-serif;
+  border: 0;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 11px 11px;
+  color: white;
+  background-color: #e63121;
+  margin: 7px;
+}
+
+.btn-chart4 {
+  width: 109px;
+  font-family: "Exo 2", sans-serif;
+  border: 0;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 11px 11px;
+  color: white;
+  background-color: #a024d3;
+  margin: 7px;
+}
+
+.btn-chart5 {
+  width: 109px;
+  font-family: "Exo 2", sans-serif;
+  border: 0;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 11px 11px;
+  color: white;
+  background-color: #4b84d3;
+  margin: 7px;
+}
+
+.btn-chart6 {
+  width: 109px;
+  font-family: "Exo 2", sans-serif;
+  border: 0;
+  border-radius: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 11px 11px;
+  color: white;
+  background-color: #0a05a3;
+  margin: 7px;
+}
+
+.imgRegua{
+  height: 60px;
+}
+
+.border {
+  left: 25%;
+  position: absolute;
+  height: 100vw;
+  background: linear-gradient(to top, #f08800, #d3e600, #00e67b, #00bce6, #1b00e6, #6b00e6, #ff00aa, #e60000);
+  padding: 2px;
+}
+
+.border2 {
+  left: 0%;
+  position: absolute;
+  height: 100vw;
+  background: linear-gradient(to top, #f08800, #d3e600, #00e67b, #00bce6, #1b00e6, #6b00e6, #ff00aa, #e60000);
+  padding: 2px;
 }

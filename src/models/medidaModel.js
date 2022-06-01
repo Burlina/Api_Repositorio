@@ -1,33 +1,36 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(IdSignos, limite_linhas) {
-    instrucaoSql = `select 
-                        temperatura, 
-                        umidade, 
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_signos = ${IdSignos}
-                    order by id desc limit ${limite_linhas}`;
+function votar(IdFadas, limites_linhas){
+    instrucaoSql = `INSERT INTO 
+    votacao (FkFada) 
+    VALUES (${IdFadas});`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(IdSignos) {
-    instrucaoSql = `select 
-                        temperatura, 
-                        umidade, 
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_signos 
-                        from medida where fk_signos = ${IdSignos} 
-                    order by id desc limit 1`;
-
+function buscarUltimasMedidas(IdFadas, limite_linhas) {
+    instrucaoSql = `select nome, count(fkfada) as id from fadas
+    join votacao
+    on fkfada = idfadas
+    group by fkFada
+    order by fkfada`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoReal(IdFadas) {
+    instrucaoSql = `select nome, count(fkfada) as id from fadas
+    join votacao
+    on fkfada = idfadas
+    group by fkFada
+    order by fkfada`;
+console.log("Executando a instrução SQL: \n" + instrucaoSql);
+return database.executar(instrucaoSql);
 }
 
 
 module.exports = {
+    votar,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal
 }
