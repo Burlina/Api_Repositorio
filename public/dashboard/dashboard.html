@@ -100,6 +100,7 @@ function votar(IdFadas) {
             console.log('entrei no fetch');
 
             if (response.ok) {
+                window.alert("Parabéns, você acabou de votar, atualize a pagina!");
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
