@@ -162,15 +162,15 @@ function votar(IdFadas) {
                 {
                     yAxisID: 'y-id',
                     label: 'Popularidade',
-                    borderColor: '#32B9CD',
-                    backgroundColor: '#32b9cd8f',
+                    backgroundColor: ['#32b242', '#fdfa53', '#e63121', '#a024d3', '#4b84d3', '#0a05a3'],
                     fill: true,
-                    data: []
+                    data: [],
+                    
                 }
             ]
         };
 
-        for (i = 0; i < resposta.length; i++) {
+        for (i = resposta.length -1; i >=0; i--) {
             var registro = resposta[i];
             dados.labels.push(registro.nome);
             // dados.datasets[0].data.push(registro.umidade);
@@ -200,7 +200,7 @@ function votar(IdFadas) {
                         id: 'y-id',
                         ticks: {
                             beginAtZero: true,
-                            max: 50,
+                            // max: 50,
                             min: 0
                         }
                     }],

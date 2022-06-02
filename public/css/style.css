@@ -316,6 +316,18 @@ input {
   right: 10px;
 }
 
+.math{
+  width: 200px;
+  height: 50px;
+  margin-left: 40px;
+  display: flex;
+}
+
+.input_cap{
+  width: 35px;
+  height: 20px;
+}
+
 .header-left h1 {
   color: #ffffff;
 }

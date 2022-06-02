@@ -110,12 +110,12 @@ body {
 }
 
 .dash {
-  background-color: #161618;
+  /* background-color: #161618; */
     width: 74.6%;
     position: absolute;
     top: 0;
     left: 25.3%;
-    height: 100vw;
+    /* height: 100vw; */
     margin-bottom: 7%;
 
   /* width: 75%;
@@ -179,12 +179,12 @@ body {
 
 .card {
   margin: 2%;
-  width: 42%;
+  width: 90%;
   flex-wrap: wrap;
   display: flex;
   text-align: center;
-  height: 260px;
-  justify-content: right;
+  /* height: 551px; */
+  justify-content: center;
   background-color: #212124;
   font-size: 20px;
 }
@@ -206,9 +206,10 @@ body {
 }
 
 .quantidade{
-  margin: 5px;
-  margin-left: 20px;
-  width: 75%;
+  display: flex;
+  flex-direction: row;
+  margin: 5px 15px 15px 15px;
+  width: 100%;
 }
 
 .cor-alerta {
@@ -321,7 +322,7 @@ body {
 .border {
   left: 25%;
   position: absolute;
-  height: 100vw;
+  height: 210vw;
   background: linear-gradient(to top, #f08800, #d3e600, #00e67b, #00bce6, #1b00e6, #6b00e6, #ff00aa, #e60000);
   padding: 2px;
 }
@@ -332,4 +333,10 @@ body {
   height: 100vw;
   background: linear-gradient(to top, #f08800, #d3e600, #00e67b, #00bce6, #1b00e6, #6b00e6, #ff00aa, #e60000);
   padding: 2px;
+}
+
+.imgcards
+{
+  width: 50%;
+  
 }
