@@ -27,9 +27,9 @@
 
     <div class="janela">
         <div class="header-left">
-            <h1><img class="logo" src="../assets/icon/Icone1.png"></h1>
+            <img class="logo1" src="../assets/imgs/fatelogo2.gif">
 
-            <div class="hello">
+            <div class="gradient">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
@@ -59,15 +59,15 @@
 
         <div class="border"></div>
 
-        <div class="dash">
+        <div class="dash1">
             <div class="btns-dash">
                     <!-- O gráfico é chamado de acordo com o id (fkfadas) do banco  -->
-                    <button class="btn-chart1" onclick="votar(1)"><img class="imgRegua" src="../assets/imgs/3.png"></button>
-                    <button class="btn-chart2" onclick="votar(2)"><img class="imgRegua" src="../assets/imgs/6.png"></button>
-                    <button class="btn-chart3" onclick="votar(3)"><img class="imgRegua" src="../assets/imgs/1.png"></button>
-                    <button class="btn-chart4" onclick="votar(4)"><img class="imgRegua" src="../assets/imgs/2.png"></button>
-                    <button class="btn-chart5" onclick="votar(5)"><img class="imgRegua" src="../assets/imgs/4.png"></button>
-                    <button class="btn-chart6" onclick="votar(6)"><img class="imgRegua" src="../assets/imgs/5.png"></button>
+                    <button class="btn-chart1" onclick="votar(1)"><img class="imgRegua" src="../assets/imgs/terralogo.gif"></button>
+                    <button class="btn-chart2" onclick="votar(2)"><img class="imgRegua" src="../assets/imgs/stellalogo.gif"></button>
+                    <button class="btn-chart3" onclick="votar(3)"><img class="imgRegua" src="../assets/imgs/bloomlogo.gif"></button>
+                    <button class="btn-chart4" onclick="votar(4)"><img class="imgRegua2" src="../assets/imgs/musalogo.gif"></button>
+                    <button class="btn-chart5" onclick="votar(5)"><img class="imgRegua2" src="../assets/imgs/aishalogo.gif"></button>
+                    <button class="btn-chart6" onclick="votar(6)"><img class="imgRegua3" src="../assets/imgs/beatrixlogo.gif"></button>
             </div>
             <div class="graph">
                 <canvas id="canvas_grafico"></canvas>
@@ -162,7 +162,7 @@ function votar(IdFadas) {
                 {
                     yAxisID: 'y-id',
                     label: 'Popularidade',
-                    backgroundColor: ['#32b242', '#fdfa53', '#e63121', '#a024d3', '#4b84d3', '#0a05a3'],
+                    backgroundColor:['#32b242', '#fdfa53', '#e63121', '#a024d3', '#4b84d3', '#0a05a3'],
                     fill: true,
                     data: [],
                     
@@ -185,7 +185,7 @@ function votar(IdFadas) {
             //Configurações do gráfico
             options: {
                 responsive: true,
-                animation: { duration: 500 },
+                animation: { duration: 800 },
                 hoverMode: 'index',
                 stacked: true,
                 title: {
@@ -202,6 +202,12 @@ function votar(IdFadas) {
                             beginAtZero: true,
                             // max: 50,
                             min: 0
+                        },
+
+                        gridLines: {
+                            drawOnChartArea: true,
+                            // color: '#ffffff',
+                            // backgroundColor:'#ffffff'
                         }
                     }],
                 }

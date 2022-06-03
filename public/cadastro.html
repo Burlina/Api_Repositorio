@@ -69,62 +69,75 @@
         </div>
         <div class="container tamanho-conteudo">
             <div class="card medio">
-                <h2>Bem-vindo!</h2>
+                <h2>Adquira novas experiências!</h2>
                 <div class="formulario">
 
                     <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
-
-                    <span class="tipo_campo">Nome:</span>
-                    <input id="nome_input" type="text" placeholder="Seu nome">
-
-                    <span class="tipo_campo">CPF:</span>
-                    <input id="cpf_input" type="text" placeholder="Seu CPF">
-
-                    <span class="tipo_campo">Telefone:</span>
-                    <input id="tel_input" type="text" placeholder="11912345678">
-
-                    <span class="tipo_campo">E-mail:</span>
-                    <input id="email_input" type="text" placeholder="meuemail@provedor.com">
-
-                    <span class="tipo_campo">Senha:</span>
-                    <input id="senha_input" type="password" placeholder="******">
-
-                    <span class="tipo_campo">Confirmação da Senha:</span>
-                    <input id="confirmacao_senha_input" type="password" placeholder="******">
-
-                    <div class="math">
-                        <p id="valor1"></p>
-                        <p> + </p>
-                        <p id="valor2"></p>
-                        <p> = </p>
-
-                        <input class="input_cap" id="totalvalores_input" type="text" name="totalvalores" required="">
+                    <div class="inputs">
+                        <span class="tipo_campo">Nome:</span>
+                        <input id="nome_input" type="text" placeholder="Seu nome">
                     </div>
 
-                    <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                    <div class="inputs">
+                        <span class="tipo_campo">CPF:</span>
+                        <input id="cpf_input" type="text" placeholder="23456789012">
+                    </div>
 
-                </div>
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
+                    <div class="inputs">
+                        <span class="tipo_campo">Telefone:</span>
+                        <input id="tel_input" type="text" placeholder="912345678">
+                    </div>
 
-                <div id="div_erros_login">
+                    <div class="inputs">
+                        <span class="tipo_campo">E-mail:</span>
+                        <input id="email_input" type="text" placeholder="meuemail@hotmail.com">
+                    </div>
 
+                    <div class="inputs">
+                        <span class="tipo_campo">Senha:</span>
+                        <input id="senha_input" type="password" placeholder="******">
+                    </div>
+
+                    <div class="inputs">
+                        <span class="tipo_campo">Confirmação da Senha:</span>
+                        <input id="confirmacao_senha_input" type="password" placeholder="******"></div>
+
+                        <div class="inputs">
+                        <div class="math">
+                            <p id="valor1"></p>
+                            <p> + </p>
+                            <p id="valor2"></p>
+                            <p> = </p>
+
+                            <input class="input_cap" id="totalvalores_input" type="text" name="totalvalores"
+                                required="">
+                        </div></div>
+
+                        <div class="inputs">
+                        <button class="btn" onclick="cadastrar()">Cadastrar</button></div>
+
+                    </div>
+                    <div id="div_aguardar" class="loading-div">
+                        <img src="./assets/circle-loading.gif" id="loading-gif">
+                    </div>
+
+                    <div id="div_erros_login">
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="border1"></div>
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por um aluno &hearts;SPTech &copy; 2022</h4>
+        <div class="border1"></div>
+        <!--footer inicio-->
+        <div class="footer">
+            <div class="container">
+                <h4>Feito com amor por um aluno &hearts;SPTech &copy; 2022</h4>
+            </div>
         </div>
-    </div>
-    <!--footer fim-->
+        <!--footer fim-->
 
 
 </body>
@@ -163,7 +176,7 @@
             alert(`reCaptcha inválido`);
             return
 
-        } if (totalvalores == soma) {
+        } else if (totalvalores == soma) {
         }
 
         // Enviando o valor da nova input
