@@ -242,6 +242,7 @@ justify-content: space-around;*/
     justify-content: left;
     background-color: #212124ad;
     font-size: 20px;
+    border-radius: 10px;
 }
 
 .card p {
@@ -428,7 +429,9 @@ justify-content: space-around;*/
 
 .imgcards
 {
-  width: 50%;
+  border-radius: 10px;
+  height: 318px;
+  width: 491px;
   
 }
 

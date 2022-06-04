@@ -24,13 +24,29 @@ CREATE TABLE aviso (
 	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 ); 
 
-CREATE TABLE medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DOUBLE,
-	umidade DOUBLE,
-	momento DATETIME,
-	fk_signos INT
+create table fadas (
+idFadas int primary key auto_increment, 
+nome varchar(20)
 );
+
+create table votacao (
+id int primary key auto_increment, 
+FkFada int,
+Foreign key (FkFada) REFERENCES Fadas(IdFadas)
+);
+
+insert into fadas values (null, 'Terra'),
+(null, 'Stella'),
+(null, 'Bloom'),
+(null, 'Musa'),
+(null, 'Aisha'),
+(null, 'Beatrix');
+
+select count(fkfada) as id from fadas
+join votacao
+on fkfada = idfadas
+group by fkFada
+order by fkfada;
 
 -- DROP DATABASE acquatec;
 
