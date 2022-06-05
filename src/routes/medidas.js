@@ -11,6 +11,7 @@ router.get("/ultimas/:IdFadas", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
+
 router.get("/tempo-real/:IdFadas", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })

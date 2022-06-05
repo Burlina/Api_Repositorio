@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcquaTec | Dashboards</title>
+    <title>Fate | Dashboards</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="dashboards.css">
@@ -19,6 +19,7 @@
 
     <!-- scripts do Chart.js -->
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    
 
 </head>
 
@@ -70,8 +71,10 @@
                     <button class="btn-chart6" onclick="votar(6)"><img class="imgRegua3" src="../assets/imgs/beatrixlogo.gif"></button>
             </div>
             <div class="graph">
-                <canvas id="canvas_grafico"></canvas>
+                <canvas id="canvas_grafico" style="width:10px;"></canvas>></canvas>
+                <canvas id="canvas_grafico2" style="width:200px;"></canvas>></canvas>
             </div>
+            <br>
         </div>
     </div>
 
@@ -100,12 +103,13 @@ function votar(IdFadas) {
             console.log('entrei no fetch');
 
             if (response.ok) {
-                window.alert("Parabéns, você acabou de votar, atualize a pagina!");
+                window.alert("Parabéns, você acabou de votar!!", window.location.reload());
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
                     obterDadosGrafico(resposta, IdFadas);
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -143,6 +147,7 @@ function votar(IdFadas) {
             });
 
     }
+
 
     // só altere aqui se souber o que está fazendo!
     function plotarGrafico(resposta, IdFadas) {
@@ -185,7 +190,7 @@ function votar(IdFadas) {
             //Configurações do gráfico
             options: {
                 responsive: true,
-                animation: { duration: 800 },
+                animation: { duration: 2000},
                 hoverMode: 'index',
                 stacked: true,
                 title: {
@@ -214,6 +219,70 @@ function votar(IdFadas) {
             }
         });
 
+        var dados2 = {
+            labels: [],
+            datasets: [
+                // {
+                //     yAxisID: 'y-umidade',
+                //     label: 'Umidade',
+                //     borderColor: '#32B9CD',
+                //     backgroundColor: '#32b9cd8f',
+                //     fill: true,
+                //     data: []
+                // },
+                {
+                    yAxisID: 'y-porcentagem',
+                    // label: 'Popularidade',
+                    backgroundColor:['#32b242', '#fdfa53', '#e63121', '#a024d3', '#4b84d3', '#0a05a3'],
+                    // fill: true,
+                    data: [],
+                    
+                }
+            ]
+        };
+
+        for (i2 = resposta.length -1; i2 >=0; i2--) {
+            var registro2 = resposta[i2];
+            dados2.labels.push(registro2.nome);
+            // dados.datasets[0].data.push(registro.umidade);
+            dados2.datasets[0].data.push(registro2.porcentagem);
+
+        }
+
+        console.log(JSON.stringify(dados2));
+
+        var ctx2 = canvas_grafico2.getContext('2d');
+        window.grafico_linha2 = Chart.Doughnut(ctx2, {
+            data: dados2,
+            //Configurações do gráfico
+            options: {
+                responsive: true,
+                animation: { duration: 2000},
+                hoverMode: 'index',
+                stacked: true,
+                title: {
+                    display: true,
+                    text: 'Porcentagem de Votos'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'line',
+                        display: true,
+                        position: 'left',
+                        id: 'y-porcentagem',
+                        ticks: {
+                            beginAtZero: true,
+                            // max: 50,
+                            min: 0
+                        },
+                    }],
+                }
+            }
+        });
+
+        window.grafico_linha.update();
+                    window.grafico_linha2.update();
+
         // function sendData() {
         //     var http = new XMLHttpRequest();
         //     http.open('POST', 'http://localhost:3000/api/sendData', false);
@@ -225,12 +294,13 @@ function votar(IdFadas) {
         // }, 2000);
 
         //Atualiza os dados de 5 em 5 segundos
-    //    atualizarGrafico(IdFadas, dados); // nao pode!
+     //atualizarGrafico(IdFadas, dados); // nao pode!
     }
+
 
     // só mexer se quiser alterar o tempo de atualização
     // ou se souber o que está fazendo!
-    function atualizarGrafico(IdFadas, dados) {
+    function atualizarGrafico(IdFadas, dados, dados2) {
 
         fetch(`/medidas/tempo-real/${IdFadas}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -238,6 +308,7 @@ function votar(IdFadas) {
 
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico: ${dados}`);
+                    console.log(`Dados atuais do gráfico: ${dados2}`);
 
                     // // tirando e colocando valores no gráfico
                     // dados.labels.shift(); // apagar o primeiro
@@ -248,12 +319,13 @@ function votar(IdFadas) {
                     // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
 
                     window.grafico_linha.update();
+                    window.grafico_linha2.update();
 
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(IdFadas, dados), 2000);
+                    proximaAtualizacao = atualizarGrafico(IdFadas, dados, dados2);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(IdFadas, dados), 2000);
+                proximaAtualizacao = atualizarGrafico(IdFadas, dados, dados2);
             }
         })
             .catch(function (error) {

@@ -2,7 +2,7 @@ var medidaModel = require("../models/medidaModel");
 
 function votar(req, res){
 
-    const limite_linhas = 6;
+    const limite_linhas = 12;
 
     var IdFadas = req.params.IdFadas;
 
@@ -23,7 +23,7 @@ function votar(req, res){
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 6;
+    const limite_linhas = 12;
 
     var IdFadas = req.params.IdFadas;
 
@@ -41,7 +41,6 @@ function buscarUltimasMedidas(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
-
 
 function buscarMedidasEmTempoReal(req, res) {
 
